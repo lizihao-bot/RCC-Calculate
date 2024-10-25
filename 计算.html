@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动计算网页</title>
+<style>
+        body {
+            text-align: center; /* 将所有文字居中 */
+        }
+.container {
+            display: flex; /* 使用flex布局使图片和文字并排展示 */
+            justify-content: center; /* 居中对齐 */
+            align-items: center; /* 垂直对齐 */
+            gap: 20px; /* 图片和文字间的间距 */
+        }
+        img {
+            width: 300px; /* 设置图片宽度 */
+            margin: 10px; /* 设置图片间距 */
+        }
+.text {
+            text-align: left; /* 文字左对齐 */
+            max-width: 300px; /* 限制文本宽度，避免过长 */
+        }
+    </style>
+    <script>
+        function calculate() {
+            // 获取输入值
+            const a = parseFloat(document.getElementById('inputA').value);
+            const b = parseFloat(document.getElementById('inputB').value);
+            const c = parseFloat(document.getElementById('inputC').value);
+            const l = parseFloat(document.getElementById('inputL').value);
+            const h = parseFloat(document.getElementById('inputH').value);
+
+            // 计算四个公式
+            const volume1 = 0.5 * a * b * c; // 传统肿瘤体积计算
+            const volume2 = 3.14 * a * h;    // 传统肿瘤接触面积计算
+            const volume3 = 0.469 * a * b * c - 4.586 * c + 13.816; // 新肿瘤体积计算
+            const volume4 = 2.376 * a ** 2 - 2.133 * l ** 2 - 20.157 * a + 5.024 * b + 1.128 * c + 17.578 * l + 2.525 * h - 2.634; // 新肿瘤接触面积计算
+
+            // 显示结果
+            document.getElementById('result1').innerText = '传统肿瘤体积计算结果: ' + volume1.toFixed(2);
+            document.getElementById('result2').innerText = '传统肿瘤接触面积计算结果: ' + volume2.toFixed(2);
+            document.getElementById('result3').innerText = '新肿瘤体计算结果: ' + volume3.toFixed(2);
+            document.getElementById('result4').innerText = '新肿瘤接触面积计算结果: ' + volume4.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <!-- 在这里添加图片 -->
+    <div style="text-align: center;">
+        <img src="C:\Users\李洪亮\Desktop\BaiduSyncdisk\在研\肿瘤计算方式研究\示意图\长宽.png" alt="图片1" style="width: 300px; margin: 10px;">
+        <img src="C:\Users\李洪亮\Desktop\BaiduSyncdisk\在研\肿瘤计算方式研究\示意图\两点内外.png" alt="图片2" style="width: 300px; margin: 10px;">
+<img src="C:\Users\李洪亮\Desktop\BaiduSyncdisk\在研\肿瘤计算方式研究\示意图\图例.png" alt="图片2" style="width: 300px; margin: 10px;">
+    </div>
+
+    <h1>输入值进行计算</h1>
+    <form onsubmit="event.preventDefault(); calculate();">
+        <label for="inputA">输入 A:</label>
+        <input type="number" id="inputA" required><br><br>
+        
+        <label for="inputB">输入 B:</label>
+        <input type="number" id="inputB" required><br><br>
+        
+        <label for="inputC">输入 C:</label>
+        <input type="number" id="inputC" required><br><br>
+        
+        <label for="inputL">输入 L:</label>
+        <input type="number" id="inputL" required><br><br>
+        
+        <label for="inputH">输入 H:</label>
+        <input type="number" id="inputH" required><br><br>
+        
+        <button type="submit">计算</button>
+    </form>
+
+    <h2 id="result1">传统肿瘤体积计算结果:</h2>
+    <h2 id="result2">传统肿瘤接触面积计算结果:</h2>
+    <h2 id="result3">新肿瘤体积计算结果:</h2>
+    <h2 id="result4">新肿瘤接触面积计算结果:</h2>
+</body>
+</html>
